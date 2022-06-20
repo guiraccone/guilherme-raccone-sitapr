@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "estoque.h": "c",
+        "loja.h": "c",
+        "cliente.h": "c"
+    }
+}
