@@ -4,7 +4,7 @@
 #include "cliente.h"
 //----------------------------------------------------------
 
-int procurarCliente(Cliente *clientes, int i_clientes)
+void procurarCliente(Cliente *clientes, int i_clientes)
 {
     int i;
     char cpfProcurado[12];
@@ -14,14 +14,20 @@ int procurarCliente(Cliente *clientes, int i_clientes)
 
     for (i = 0; i < i_clientes; i++)
     {
-        if (!strcmp(cpfProcurado, clientes[i].cpf) == 1)
+        if (strcmp(cpfProcurado, clientes[i].cpf) == 0)
         {
             printf("\n\nRegistro de cliente encontrado.\n\n");
             printf("\n\t\tNome: %s", clientes[i].nome);
             printf("\n\t\tCPF: %s", clientes[i].cpf);
             printf("\n\t\tSaldo: R$%.2f", clientes[i].saldo);
+            return;
+        }
+        else
+        {
+            fflush(stdin);
         }
     }
+    printf("\nCPF não encontrado.\n");
 }
 //----------------------------------------------------------
 // Função para imprimir os dados de um cliente.
@@ -49,16 +55,16 @@ Cliente cadastraCliente()
            "Cadastro de cliente\n");
 
     printf("\nInforme o CPF do cliente: ");
-    fflush(stdin);
     gets(cadastro.cpf);
+    fflush(stdin);
 
     printf("\nInforme o nome do cliente: ");
-    fflush(stdin);
     gets(cadastro.nome);
+    fflush(stdin);
 
     printf("\nInforme o saldo do cliente (R$): ");
-    fflush(stdin);
     scanf("%f", &cadastro.saldo);
+    fflush(stdin);
 
     return cadastro;
 }

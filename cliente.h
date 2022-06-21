@@ -20,6 +20,6 @@ Cliente cadastraCliente();
 void imprimeCliente(Cliente cliente);
 int carregarClientesTXT(Cliente *clientes);
 void salvarClienteTXT(Cliente *clientes, int i_clientes);
-int procurarCliente(Cliente *clientes, int i_clientes);
+void procurarCliente(Cliente *clientes, int i_clientes);
 
 #endif

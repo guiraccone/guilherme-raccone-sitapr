@@ -5,6 +5,11 @@
 
 //----------------------------------------------------------
 //
+void ordenarProduto(Produto produto)
+{
+    
+}
+
 void imprimeProduto(Produto produto)
 {
 
