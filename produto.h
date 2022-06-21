@@ -20,5 +20,6 @@ void imprimeProduto(Produto produto);
 Produto cadastraProduto();
 int carregarProdutosTXT(Produto *produtos);
 void salvarProdutoTXT(Produto *produtos, int i_produtos);
+void ordenarProduto(Produto *produtos, int i_produtos);
 
 #endif

@@ -17,6 +17,8 @@ CarrinhoCompras cadastraCarrinho()
 {
     CarrinhoCompras cadastro;
 
+    system("cls");
+
     printf("\n-----------------------------\n"
            "Cadastro de carrinho\n");
 

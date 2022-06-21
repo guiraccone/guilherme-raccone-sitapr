@@ -5,9 +5,24 @@
 
 //----------------------------------------------------------
 //
-void ordenarProduto(Produto produto)
+void ordenarProduto(Produto *produtos, int i_produtos)
 {
-    
+    int i, j;
+    int temp, temp2;
+    char temp1;
+    for (i = 0; i < i_produtos - 1; i++)
+    {
+        for (j = i + 1; j < i_produtos; j++)
+        {
+            if (produtos[i].valor > produtos[j].valor)
+            {
+
+                temp2 = produtos[i].valor;
+                produtos[i].valor = produtos[j].valor;
+                produtos[j].valor = temp2;
+            }
+        }
+    }
 }
 
 void imprimeProduto(Produto produto)
@@ -34,14 +49,14 @@ Produto cadastraProduto()
     printf("\n-----------------------------\n"
            "Cadastro do produto\n");
 
-    printf("\nInforme o código do produto: ");
+    printf("\nInforme o código do produto:\n\n");
     scanf("%d", &cadastro.codigoProduto);
     fflush(stdin);
 
-    printf("\nInforme a descrição do produto: ");
+    printf("\n\n\nInforme a descrição do produto:\n\n");
     gets(cadastro.descricao);
 
-    printf("\nInforme o valor do produto (R$): ");
+    printf("\n\n\nInforme o valor do produto (R$):\n\n");
     scanf("%f", &cadastro.valor);
     fflush(stdin);
 

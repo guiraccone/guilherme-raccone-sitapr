@@ -76,7 +76,8 @@ void opcao2()
 {
     printf("\n\tAperte a tecla informada nas opções abaixo para operar na estrutura de Produto:\n\n"
            "\t\t[ 1 ] - Adicionar Produto\n"
-           "\t\t[ 2 ] - Listar Produtos\n\n"
+           "\t\t[ 2 ] - Listar Produtos\n"
+           "\t\t[ 3 ] - Ordenar Produtos por Preço\n\n"
            "\t\t[ESC] - Voltar ao menu inical\n\n\n");
 
     switch (getch())
@@ -86,10 +87,16 @@ void opcao2()
         break;
 
     case '2':
+        system("cls");
         for (int n = 0; n < i_produtos; n++)
         {
             imprimeProduto(produtos[n]);
         }
+        break;
+
+    case '3':
+        ordenarProduto(produtos, i_produtos);
+        printf("Produtos ordenados !\n");
         break;
 
     case 27:
@@ -140,6 +147,7 @@ void opcao4()
         break;
 
     case '2':
+        system("cls");
         for (int n = 0; n < i_carrinhos; n++)
         {
             imprimeCarrinho(carrinhos[n]);
