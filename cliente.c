@@ -9,17 +9,29 @@ void procurarCliente(Cliente *clientes, int i_clientes)
     int i;
     char cpfProcurado[12];
 
-    printf("\tDigite o CPF do cliente procurado.\n\n");
+    printf("___________________________________________________________________________________________\n"
+           "\n\tDigite o CPF do cliente procurado.\n"
+           "___________________________________________________________________________________________\n\n");
     scanf("%s", &cpfProcurado);
 
     for (i = 0; i < i_clientes; i++)
     {
         if (strcmp(cpfProcurado, clientes[i].cpf) == 0)
         {
-            printf("\n\nRegistro de cliente encontrado.\n\n");
-            printf("\n\t\tNome: %s", clientes[i].nome);
-            printf("\n\t\tCPF: %s", clientes[i].cpf);
-            printf("\n\t\tSaldo: R$%.2f", clientes[i].saldo);
+            printf("\n\n\t\tRegistro de cliente encontrado.\n\n\n\n");
+
+            printf("___________________________________________________________________________________________\n"
+                   "\n\t\t\tInformações de Cliente: \n"
+                   "___________________________________________________________________________________________\n"
+                   "\n\t\tCPF: %s\n"
+                   "-------------------------------------------------------------------------------------------\n"
+                   "\n\t\tNome: %s\n"
+                   "-------------------------------------------------------------------------------------------\n"
+                   "\n\t\tSaldo: R$%.2f\n"
+                   "-------------------------------------------------------------------------------------------\n\n\n",
+                   clientes[i].cpf,
+                   clientes[i].nome,
+                   clientes[i].saldo);
             return;
         }
         else
@@ -27,17 +39,23 @@ void procurarCliente(Cliente *clientes, int i_clientes)
             fflush(stdin);
         }
     }
-    printf("\nCPF não encontrado.\n");
+    printf("___________________________________________________________________________________________\n"
+           "\n\tCPF inválido ou não encontrado.\n"
+           "___________________________________________________________________________________________\n");
 }
 //----------------------------------------------------------
 // Função para imprimir os dados de um cliente.
 void imprimeCliente(Cliente cliente)
 {
-    printf("\n===========================================================\n"
-           "\tInformações de Cliente: \n"
-           "\n\t\tCPF: %s\n"
-           "\n\t\tNome: %s\n"
-           "\n\t\tSaldo: R$%.2f\n",
+    printf("\n\n___________________________________________________________________________________________\n"
+           "\n\t\t\t\tInformações do Cliente"
+           "\n___________________________________________________________________________________________\n"
+           "\n\t\tCPF\n\n\t\t%s\n\n"
+           "-------------------------------------------------------------------------------------------\n"
+           "\n\t\tNome\n\n\t\t%s\n\n"
+           "-------------------------------------------------------------------------------------------\n"
+           "\n\t\tSaldo\n\n\t\tR$%.2f\n\n"
+           "-------------------------------------------------------------------------------------------\n\n\n",
            cliente.cpf,
            cliente.nome,
            cliente.saldo);
@@ -51,20 +69,24 @@ Cliente cadastraCliente()
 
     system("cls");
 
-    printf("\n-----------------------------\n"
-           "Cadastro de cliente\n");
+    printf("-------------------------------------------------------------------------------------------\n"
+           "\t\t\t\tCadastro de cliente\n"
+           "-------------------------------------------------------------------------------------------\n");
 
-    printf("\nInforme o CPF do cliente: ");
+    printf("\n\t\t\tInforme o CPF do cliente:\n\n");
+    fflush(stdin);
     gets(cadastro.cpf);
-    fflush(stdin);
+    printf("-------------------------------------------------------------------------------------------\n");
 
-    printf("\nInforme o nome do cliente: ");
+    printf("\n\t\t\tInforme o nome do cliente:\n\n");
+    fflush(stdin);
     gets(cadastro.nome);
-    fflush(stdin);
+    printf("-------------------------------------------------------------------------------------------\n");
 
-    printf("\nInforme o saldo do cliente (R$): ");
-    scanf("%f", &cadastro.saldo);
+    printf("\n\t\t\tInforme o saldo do cliente (R$):\n\n");
     fflush(stdin);
+    scanf("%f", &cadastro.saldo);
+    printf("-------------------------------------------------------------------------------------------\n");
 
     return cadastro;
 }

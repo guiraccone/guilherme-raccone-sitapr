@@ -14,24 +14,20 @@
 #include "cliente.h"
 #include "estoque.h"
 #include "loja.h"
-#include "carrinho.h"
 
 #define MAX_CLIENTES 100
 #define MAX_PRODUTOS 100
 #define MAX_ESTOQUE 100
-#define MAX_CARRINHO 100
 #define MAX_LOJAS 100
 
 Cliente clientes[MAX_CLIENTES];
 Produto produtos[MAX_PRODUTOS];
 Estoque estoques[MAX_ESTOQUE];
-CarrinhoCompras carrinhos[MAX_CARRINHO];
 Loja lojas[MAX_LOJAS];
 
 int i_clientes = 0; // Variável de índice do vetor.
 int i_produtos = 0;
 int i_lojas = 0;
-int i_carrinhos = 0;
 int i_estoque = 0;
 
 //----------------------------------------------------------
@@ -39,11 +35,14 @@ int i_estoque = 0;
 void opcao1()
 {
 
-    printf("\n\tAperte a tecla informada nas opções abaixo para operar na estrutura de Cliente:\n\n"
-           "\t\t[ 1 ] - Adicionar Cliente\n"
-           "\t\t[ 2 ] - Listar Clientes\n"
-           "\t\t[ 3 ] - Procurar Cliente por CPF\n\n"
-           "\t\t[ESC] - Voltar ao menu inicial\n\n\n");
+    printf("\t___________________________________________________________________________________________\n"
+           "\n\t\tAperte a tecla informada nas opções abaixo para operar na estrutura de Cliente:\n"
+           "\t___________________________________________________________________________________________\n"
+           "\n\t\t[ 1 ] - Adicionar Cliente\n\n"
+           "\t\t[ 2 ] - Listar Clientes\n\n"
+           "\t\t[ 3 ] - Procurar Cliente por CPF\n\n\n"
+           "\t\t[ESC] - Voltar ao menu inicial\n"
+           "\t___________________________________________________________________________________________\n\n");
 
     switch (getch())
     {
@@ -74,11 +73,14 @@ void opcao1()
 
 void opcao2()
 {
-    printf("\n\tAperte a tecla informada nas opções abaixo para operar na estrutura de Produto:\n\n"
-           "\t\t[ 1 ] - Adicionar Produto\n"
-           "\t\t[ 2 ] - Listar Produtos\n"
-           "\t\t[ 3 ] - Ordenar Produtos por Preço\n\n"
-           "\t\t[ESC] - Voltar ao menu inical\n\n\n");
+    printf("\t___________________________________________________________________________________________\n"
+           "\n\t\tAperte a tecla informada nas opções abaixo para operar na estrutura de Produto:\n"
+           "\t___________________________________________________________________________________________\n"
+           "\n\t\t[ 1 ] - Adicionar Produto\n\n"
+           "\t\t[ 2 ] - Listar Produtos\n\n"
+           "\n\t\t[ 3 ] - Ordenar Produtos por Preço\n\n\n"
+           "\t\t[ESC] - Voltar ao menu inicial\n"
+           "\t___________________________________________________________________________________________\n\n");
 
     switch (getch())
     {
@@ -97,23 +99,26 @@ void opcao2()
     case '3':
 
         ordenarProduto(produtos, i_produtos);
-        printf("Produtos ordenados !\n");
+        printf("\nProdutos ordenados !\n");
         break;
 
     case 27:
         return;
 
     default:
-        printf("Comando não implementado\n");
+        printf("\nComando não implementado\n\n");
     }
 }
 
 void opcao3()
 {
-    printf("\n\tAperte a tecla informada nas opções abaixo para operar na estrutura de Estoque:\n\n"
-           "\t\t[ 1 ] - Adicionar Estoque\n"
-           "\t\t[ 2 ] - Listar Estoque\n\n"
-           "\t\t[ESC] - Voltar ao menu inical\n\n\n");
+    printf("\t___________________________________________________________________________________________\n"
+           "\n\t\tAperte a tecla informada nas opções abaixo para operar na estrutura de Estoque:\n"
+           "\t___________________________________________________________________________________________\n"
+           "\n\t\t[ 1 ] - Adicionar Estoque\n\n"
+           "\t\t[ 2 ] - Listar Estoque\n\n\n"
+           "\n\n\t\t[ESC] - Voltar ao menu inicial\n"
+           "\t___________________________________________________________________________________________\n\n");
 
     switch (getch())
     {
@@ -136,36 +141,13 @@ void opcao3()
 
 void opcao4()
 {
-    printf("\n\tAperte a tecla informada nas opções abaixo para operar na estrutura de Carrinho:\n\n"
-           "\t\t[ 1 ] - Adicionar Carrinho\n"
-           "\t\t[ 2 ] - Listar Carrinhos\n\n"
-           "\t\t[ESC] - Voltar ao menu inical\n\n\n");
-
-    switch (getch())
-    {
-    case '1':
-        carrinhos[i_carrinhos++] = cadastraCarrinho();
-        break;
-
-    case '2':
-        system("cls");
-        for (int n = 0; n < i_carrinhos; n++)
-        {
-            imprimeCarrinho(carrinhos[n]);
-        }
-        break;
-
-    case 27:
-        return;
-    }
-}
-
-void opcao5()
-{
-    printf("\n\tAperte a tecla informada nas opções abaixo para operar na estrutura de Loja:\n\n"
-           "\t\t[ 1 ] - Adicionar Loja\n"
-           "\t\t[ 2 ] - Listar Lojas\n\n"
-           "\t\t[ESC] - Voltar ao menu inicial\n\n\n");
+    printf("\t___________________________________________________________________________________________\n"
+           "\n\t\tAperte a tecla informada nas opções abaixo para operar na estrutura de Loja:\n"
+           "\t___________________________________________________________________________________________\n"
+           "\n\t\t[ 1 ] - Adicionar Loja\n\n"
+           "\t\t[ 2 ] - Listar Lojas\n\n\n"
+           "\t\t[ESC] - Voltar ao menu inicial\n"
+           "\t___________________________________________________________________________________________\n\n");
 
     switch (getch())
     {
@@ -198,30 +180,27 @@ int main()
     i_clientes = carregarClientesTXT(clientes);
     i_produtos = carregarProdutosTXT(produtos);
     i_estoque = carregarEstoquesTXT(estoques);
-    i_carrinhos = carregarCarrinhosTXT(carrinhos);
     i_lojas = carregarLojasTXT(lojas);
 
     while (1)
     {
         system("cls");
 
-        printf("\n\tAperte a tecla informada nas opções abaixo para operar em alguma estrutura.\n\n"
+        printf("\t___________________________________________________________________________________________\n"
+
+               "\n\t\tAperte a tecla informada nas opções abaixo para operar em alguma estrutura."
+               "\n\t___________________________________________________________________________________________\n"
+               "\n\t\t[ 1 ] - Cliente\n"
                "\t_______________________________________________\n"
-               "\t\t[ 1 ] - Cliente\n"
+               "\n\t\t[ 2 ] - Produto\n"
+               "\t_______________________________________________\n"
+               "\n\t\t[ 3 ] - Estoque\n"
+               "\t_______________________________________________\n"
+               "\n\t\t[ 4 ] - Lojas\n"
                "\t_______________________________________________\n"
 
-               "\t\t[ 2 ] - Produto\n"
-               "\t_______________________________________________\n"
-
-               "\t\t[ 3 ] - Estoque\n"
-               "\t_______________________________________________\n"
-
-               "\t\t[ 4 ] - Carrinho\n"
-               "\t_______________________________________________\n"
-               "\t\t[ 5 ] - Lojas\n"
-               "\t_______________________________________________\n\n"
-
-               "\t\t[ESC] - Fechar o programa e salvar alterações\n\n\n");
+               "\n\t\t[ESC] - Fechar o programa e salvar alterações\n"
+               "\t___________________________________________________________________________________________\n\n\n");
 
         switch (getch())
         {
@@ -248,15 +227,8 @@ int main()
             opcao4();
             break;
 
-        case '5':
-
-            system("cls");
-            opcao5();
-            break;
-
         case 27:
 
-            salvarCarrinhoTXT(carrinhos, i_carrinhos);
             salvarClienteTXT(clientes, i_clientes);
             salvarEstoqueTXT(estoques, i_estoque);
             salvarLojaTXT(lojas, i_lojas);

@@ -8,25 +8,17 @@
 void ordenarProduto(Produto p[], int n)
 {
     int i, j;
-    int temp, temp2;
-    char temp1;
+    Produto temp;
     for (i = 0; i < n - 1; i++)
     {
         for (j = i + 1; j < n; j++)
         {
             if (p[i].valor > p[j].valor)
             {
-                temp2 = p[i].valor;
-                p[i].valor = p[j].valor;
-                p[j].valor = temp2;
 
-                temp = p[i].codigoProduto;
-                p[i].codigoProduto = p[j].codigoProduto;
-                p[j].codigoProduto = temp;
-
-                temp1 = *p[i].descricao;
-                *p[i].descricao = *p[j].descricao;
-                *p[j].descricao = temp1;
+                temp = p[i];
+                p[i] = p[j];
+                p[j] = temp;
             }
         }
     }
@@ -35,11 +27,15 @@ void ordenarProduto(Produto p[], int n)
 void imprimeProduto(Produto produto)
 {
 
-    printf("\n===========================================================\n"
-           "\tInformações de Produto: \n"
-           "\n\t\tCódigo: %d\n"
-           "\n\t\tDescrição: %s\n"
-           "\n\t\tValor: R$%.2f\n",
+    printf("___________________________________________________________________________________________\n"
+           "\n\t\t\t\tInformações do Produto"
+           "\n___________________________________________________________________________________________\n"
+           "\n\tCódigo\n\n\t%d\n\n"
+           "-------------------------------------------------------------------------------------------\n"
+           "\n\tDescrição\n\n\t%s\n\n"
+           "-------------------------------------------------------------------------------------------\n"
+           "\n\tValor \n\n\tR$%.2f\n\n"
+           "-------------------------------------------------------------------------------------------\n\n\n",
            produto.codigoProduto,
            produto.descricao,
            produto.valor);
@@ -53,19 +49,24 @@ Produto cadastraProduto()
 
     system("cls");
 
-    printf("\n-----------------------------\n"
-           "Cadastro do produto\n");
+    printf("-------------------------------------------------------------------------------------------\n"
+           "\t\t\t\t\tCadastro do produto\n"
+           "-------------------------------------------------------------------------------------------\n");
 
-    printf("\nInforme o código do produto:\n\n");
+    printf("\n\t\t\tInforme o código do produto:\n\n");
+    fflush(stdin);
     scanf("%d", &cadastro.codigoProduto);
-    fflush(stdin);
+    printf("-------------------------------------------------------------------------------------------\n");
 
-    printf("\n\n\nInforme a descrição do produto:\n\n");
+    printf("\n\t\t\tInforme a descrição do produto:\n\n");
+    fflush(stdin);
     gets(cadastro.descricao);
+    printf("-------------------------------------------------------------------------------------------\n");
 
-    printf("\n\n\nInforme o valor do produto (R$):\n\n");
-    scanf("%f", &cadastro.valor);
+    printf("\n\t\t\tInforme o valor do produto (R$):\n\n");
     fflush(stdin);
+    scanf("%f", &cadastro.valor);
+    printf("-------------------------------------------------------------------------------------------\n");
 
     return cadastro;
 }

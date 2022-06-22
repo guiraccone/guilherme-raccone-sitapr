@@ -5,11 +5,15 @@
 
 void imprimeEstoque(Estoque estoque)
 {
-    printf("\n===========================================================\n"
-           "\tInformações de Estoque: \n"
-           "\n\t\tCNPJ: %s\n"
-           "\n\t\tCódigo: %d\n"
-           "\n\t\tQuantidade: %d\n",
+    printf("___________________________________________________________________________________________\n"
+           "\n\t\t\t\tInformações de Estoque\n"
+           "___________________________________________________________________________________________\n"
+           "\n\tCNPJ\n\n\t%s\n\n"
+           "-------------------------------------------------------------------------------------------\n"
+           "\n\tCódigo do Produto\n\n\t%d\n\n"
+           "-------------------------------------------------------------------------------------------\n"
+           "\n\tQuantidade\n\n\t%d\n\n"
+           "-------------------------------------------------------------------------------------------\n\n\n",
            estoque.cnpj,
            estoque.codigoProduto,
            estoque.quantidade);
@@ -21,20 +25,24 @@ Estoque cadastraEstoque()
 
     system("cls");
 
-    printf("\n-----------------------------\n"
-           "Cadastro do estoque\n");
+    printf("-------------------------------------------------------------------------------------------\n"
+           "\t\t\t\t\tCadastro do Estoque\n"
+           "-------------------------------------------------------------------------------------------\n");
 
-    printf("Informe o CNPJ:\n");
+    printf("\n\t\t\tInforme o CNPJ:\n\n");
     fflush(stdin);
     gets(cadastro.cnpj);
+    printf("-------------------------------------------------------------------------------------------\n");
 
-    printf("Informe o código do produto:\n");
+    printf("\n\t\t\tInforme o código do produto:\n\n");
+    fflush(stdin);
     scanf("%d", &cadastro.codigoProduto);
-    fflush(stdin);
+    printf("-------------------------------------------------------------------------------------------\n");
 
-    printf("Informe a quantidade:\n");
-    scanf("%d", &cadastro.quantidade);
+    printf("\n\t\t\tInforme a quantidade:\n\n");
     fflush(stdin);
+    scanf("%d", &cadastro.quantidade);
+    printf("-------------------------------------------------------------------------------------------\n");
 
     return cadastro;
 }
@@ -76,8 +84,8 @@ int carregarEstoquesTXT(Estoque *estoques)
         buffer[strlen(buffer) - 1] = '\0';
 
         strcpy((*(estoques + i_estoque)).cnpj, strtok(buffer, "|"));
-        (*(estoques + i_estoque)).codigoProduto, atoi(strtok(NULL, "|"));
-        (*(estoques + i_estoque)).quantidade, atoi(strtok(NULL, "|"));
+        (*(estoques + i_estoque)).codigoProduto = atoi(strtok(NULL, "|"));
+        (*(estoques + i_estoque)).quantidade = atoi(strtok(NULL, "|"));
         i_estoque++;
     }
 
